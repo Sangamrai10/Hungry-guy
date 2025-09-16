@@ -1,4 +1,5 @@
 import os 
+import time 
 from cryptography.fernet import Fernet
 
 
@@ -32,5 +33,13 @@ if secret_word == user_secret_word:
         with open(file, "wb") as theFiles:
                 theFiles.write(contents_decrypt)
     print("Decryption success!")
+    # Format existing key or remove key file 
+    print("Formatting Key...!")
+    time.sleep(2)
+    if os.path.exists("accessKey.key"):
+        os.remove("accessKey.key")
+        print("Key formatted!")
+    else:
+        print("No key found")
 else:
     print("Try agin!!!")
